@@ -29,6 +29,7 @@ class ViewController: UITableViewController {
         signos.append("Aquário")
         signos.append("Peixes")
         
+        
         //configura significados
         significados.append("O ariano é uma pessoa cheia de energia e entusiasmo. Pioneiro e aventureiro, lhe encantam as metas, a liberdade e as idéias novas.")
         significados.append("Zeloso e possessivo, um cauro pode tender a ser inflexível e ressentido. As vezes os Touro pecam de ser cobiçosos e de permitir-se tudo.")
@@ -58,6 +59,18 @@ class ViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celulaDeReuso", for: indexPath)
         cell.textLabel?.text = signos[indexPath.row]
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let alert = UIAlertController(title: "Significado", message: significados[indexPath.row], preferredStyle: .alert)
+        
+        let actionOk = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        
+        alert.addAction(actionOk)
+        
+        present(alert, animated: true, completion: nil)
     }
 
 }
